@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        .container{
+            width: 400px;
+            clear: both;
+        }
+        input{
+            width: 100%;
+        }
+        .error{
+            color: red;
+        }
+        .success{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+
+        <div class="errors">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form action="/process" method="post">
+            <label for="first_name">First Name: 
+                <input type="text" name="first_name">
+            </label>
+            <label for="last_name">Last Name: 
+                <input type="text" name="last_name">
+            </label>
+            <label for="email">Email: 
+                <input type="text" name="email">
+            </label>
+            <label for="password">Password: 
+                <input type="password" name="password">
+            </label>
+            <label for="confirm_passowrd">Confirm Password: 
+                <input type="password" name="confirm_password">
+            </label>
+            <input type="submit" value="Submit" class="button">
+        </form>
+        
+    </div>
+</body>
+</html>
